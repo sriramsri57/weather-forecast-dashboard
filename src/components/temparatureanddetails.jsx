@@ -6,7 +6,7 @@ import {
   UilSun,
   UilSunset,
 } from "@iconscout/react-unicons";
-import { formatToLocalTime, iconUrlFromCode } from "../services/weatherservice";
+import { formatToLocalTime, iconUrlFromCode ,findDirection} from "../services/weatherservice";
 
 function TemperatureAndDetails({
   weather: {
@@ -21,6 +21,7 @@ function TemperatureAndDetails({
     humidity,
     feels_like,
     timezone,
+    deg
   },
 }) {
   return (
@@ -47,6 +48,12 @@ function TemperatureAndDetails({
             <UilWind size={18} className="mr-1" />
             Wind:
             <span className="font-medium ml-1">{`${speed.toFixed()} km/h`}</span>
+
+          </div>
+          <div className="flex font-light text-sm items-center justify-center">
+            <UilWind size={18} className="mr-1" />
+            Wind Direction:
+            <span className="font-medium ml-1">{`${findDirection(deg)}`}</span>
 
           </div>
         </div>
